@@ -21,9 +21,9 @@ window.addEventListener('scroll', () => {
     const RLbanner = document.querySelectorAll('.rl-banner-inner');
     for(var i=0; i<RLbanner.length; i++){
         if(i % 2 == 0){
-            RLbanner[i].style.transform = `translate3d(${window.scrollY / document.querySelector('.at-header').scrollHeight}rem, 0, 0)`
+            RLbanner[i].style.transform = `translate3d(${-window.scrollY / document.querySelector('.float-txt').clientHeight}rem, 0, 0)`
         }else if(i % 2 == 1){
-            RLbanner[i].style.transform = `translate3d(${-window.scrollY / (window.innerHeight)}rem, 0, 0)`
+            RLbanner[i].style.transform = `translate3d(${window.scrollY / (window.innerHeight)}rem, 0, 0)`
         }
     }
 });
