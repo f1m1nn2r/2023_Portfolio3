@@ -38,7 +38,7 @@ a{text-decoration:none;}
     }
 }
 @mixin banner(){height:4vw; position:relative; overflow:hidden; border:1px solid rgba(0, 144, 0, .5); border-left:0; border-right:0;
-    &-inner{@include dis-flex(null, null, null); position:absolute; 
+    &-inner{width:100%; @include dis-flex(null, null, null); position:absolute; 
         p{margin:0 .5vw; white-space:nowrap; @include font(3vw, 600, $mont, null);}
     }
 }
@@ -50,21 +50,22 @@ a{text-decoration:none;}
     .stroke{color:#000; text-shadow:-1px -1px 0 $red, 1px -1px 0 $red, -1px 1px 0 $red, 1px 1px 0 $red;}
 }
 
-.at-header{width:100%; position:fixed; top:2vw; left:0; z-index:99;
+.at-header{width:100%; position:fixed; top:2vw; left:0; z-index:99; transition:opacity .5s ease, visibility .5s ease, top .5s ease;
     &-inner{width:100%; @include dis-flex(center, space-between, null);  padding:0 2.5vw;
         .logo{padding:0.5vw 1vw; background:$red;
             p{@include font(1vw, 600, $mont, #000);}
         }
         ul{@include dis-flex(null, null, null); gap:2.4vw;
-            li{
+            li{cursor:pointer;
                 a{@include font(1vw, 600, $mont, null);}
             }
         }
     }
+    &.hide{top:4vw; opacity:0; visibility:hidden;}
 }
 .container_wide{
     .section01{@include conSize(null, 50vw, null); position:relative; overflow:hidden;
-        .b-intro-txt{line-height:.9; position:absolute; z-index:-1; @include font(58vw, null, $koul, #000); letter-spacing:-2vw;}
+        .b-intro-txt{@include conSize(100%, 100%, .9); position:absolute; z-index:-1; @include font(58vw, null, $koul, #000); letter-spacing:-2vw;}
         &-inner{@include conSize(100%, 100%, null); position:relative;
             .float-txt-wrap{@include float();}
         }
@@ -85,7 +86,7 @@ a{text-decoration:none;}
                 .right-column{@include dis-flex(null, space-between, column);
                     .top-column{@include dis-flex(null, space-between, null);
                         ul{@include dis-flex(null, null, null); gap:.7vw;
-                            li{@include conSize(null, 1.7vw, 1.7vw); padding:0 .8vw; border:1px solid rgba(0, 144, 0, .5); border-radius:5vw; cursor:pointer;
+                            li{@include conSize(null, 2vw, 2vw); padding:0 .8vw; border:1px solid rgba(0, 144, 0, .5); border-radius:5vw; cursor:pointer;
                                 a{display:block; pointer-events:none; @include font(1vw, 600, $mont, $red);}
                                 &.active{background:$red; border:none;
                                     a{color:#000}
