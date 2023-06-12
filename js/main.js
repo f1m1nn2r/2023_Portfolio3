@@ -1,15 +1,40 @@
 // 헤더 메뉴 클릭 시 섹션 이동
 const menu = document.querySelector('.at-header ul');
 menu.addEventListener('click', (e) => {
-    // 클릭한 메뉴의 dataset 값을 구하고
+    // 클릭한 메뉴의 dataset 값을 구하고, scrollMenu로 구한 dataset 값의 선택자를 찾아감
     const thisMenu = e.target;
     const menuValue = thisMenu.dataset.menu;
-    // 구한 dataset 값의 선택자를 찾아감
     const scrollMenu = document.querySelector(menuValue);
     scrollMenu.scrollIntoView({
         behavior:'smooth'
     });
 });
+
+// 첫 섹션 인트로 텍스트 반복문으로 추가
+for(var i=0; i<15; i++){
+    const firstTemplate = 
+    `   
+        <div class='float-txt stroke'>
+            <div>
+                <span>W</span>
+                <span>E</span>
+                <span>B</span>
+            </div>
+            <div>
+                <span>P</span>
+                <span>U</span>
+                <span>B</span>
+                <span>L</span>
+                <span>I</span>
+                <span>S</span>
+                <span>H</span>
+                <span>E</span>
+                <span>R</span>
+            </div>
+        </div>
+    `
+    document.querySelector('.section01-inner .float-txt-wrap').insertAdjacentHTML('beforeend', firstTemplate);
+}
 
 // work 섹션 작업물 div 및 img 추가
 const stickyBox = document.querySelector('.sticky-box');
