@@ -30,9 +30,9 @@ a{text-decoration:none;}
         &:not(:first-child){
             span{color:#000;}
         }
-        @for $i from 1 to 15{
+        @for $i from 1 to 16{
             &:nth-child(#{$i}){z-index:50 - $i;
-                span{animation-delay:2 - $i * .1 + s}
+                span{animation-delay:$i * .1 + s}
             }
         }
     }
