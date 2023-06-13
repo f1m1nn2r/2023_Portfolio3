@@ -99,14 +99,16 @@ a{text-decoration:none;}
                         }
                     }
                     .bottom-column{position:realtive;
-                        ul{width:100%; position:absolute; opacity:0; visibility:hidden;
-                            p, span{@include sText();}
-                            span{display:block; text-align:right;}
-                            div{@include dis-flex(null, null, null);
-                                span{width:30%;}
-                                p{width:70%; text-align:right;}
+                        ul{width:100%; 
+                            li{position:absolute; opacity:0; visibility:hidden;
+                                p, span{@include sText();}
+                                span{display:block; text-align:right;}
+                                div{@include dis-flex(null, null, null);
+                                    span{width:30%;}
+                                    p{width:70%; text-align:right;}
+                                }
+                                &.active{position:static; opacity:1; visibility:visible;}
                             }
-                            &.active{position:static; opacity:1; visibility:visible;}
                         }
                     }
                 }

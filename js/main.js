@@ -10,7 +10,7 @@ menu.addEventListener('click', (e) => {
     });
 });
 
-// 첫 섹션 인트로 텍스트 반복문으로 추가
+// 첫, 마지막 섹션 인트로 텍스트 반복문으로 추가
 for(var i=0; i<15; i++){
     const firstTemplate = 
     `   
@@ -33,8 +33,62 @@ for(var i=0; i<15; i++){
             </div>
         </div>
     `
+    const lastTemplate = 
+    `
+    <div class="float-txt stroke">
+        <div>
+            <span>T</span>
+            <span>H</span>
+            <span>A</span>
+            <span>N</span>
+            <span>K</span>
+            <span>S</span>
+        </div>
+        <div>
+            <span>F</span>
+            <span>O</span>
+            <span>R</span>
+        </div>
+        <div>
+            <span>W</span>
+            <span>A</span>
+            <span>T</span>
+            <span>C</span>
+            <span>H</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G</span>
+            <span>!</span>
+        </div>
+    </div>
+    `
     document.querySelector('.section01-inner .float-txt-wrap').insertAdjacentHTML('beforeend', firstTemplate);
+    document.querySelector('.section04-inner .float-txt-wrap').insertAdjacentHTML('beforeend', lastTemplate);
 }
+
+// introduce, career 클릭 시 컨텐츠 변경
+const toggleLi =  document.querySelectorAll('.toggle-tab li');
+const toggleContent = document.querySelectorAll('.toggle-content li');
+function toggleActive(toggleLi){
+    for(var i=0; i<toggleLi.length; i++){
+        toggleLi[i].addEventListener('click', () => {
+            var thisTab = this;
+            for(var i=0; i<toggleLi.length; i++){
+                if(thisTab != toggleLi[i]){
+                    toggleLi[i].classList.remove('active');
+                    toggleContent[i].classList.remove('active');
+                }else if(thisTab.classList.contains('active') === true){
+                    thisTab.classList.remove('active');
+                    toggleContent[i].classList.remove('active');
+                }else{
+                    thisTab.classList.add('active');
+                    toggleContent[i].classList.add('active');
+                }
+            }
+        })
+    }
+}
+toggleActive(toggleLi);
 
 // work 섹션 작업물 div 및 img 추가
 const stickyBox = document.querySelector('.sticky-box');
