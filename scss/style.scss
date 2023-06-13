@@ -42,6 +42,7 @@ a{text-decoration:none;}
         p{margin:0 .5vw; white-space:nowrap; @include font(3vw, 600, $mont, null);}
     }
 }
+@mixin bIntroText(){@include conSize(100%, 100%, .9); position:absolute; z-index:-1; @include font(58vw, null, $koul, #000); letter-spacing:-2vw;}
 
 @supports(-webkit-text-stroke:1px $red){
     .stroke{-webkit-text-stroke:1px $red; color:transparent; text-shadow:none;}
@@ -65,7 +66,7 @@ a{text-decoration:none;}
 }
 .container_wide{
     .section01{@include conSize(null, 50vw, null); position:relative; overflow:hidden;
-        .b-intro-txt{@include conSize(100%, 100%, .9); position:absolute; z-index:-1; @include font(58vw, null, $koul, #000); letter-spacing:-2vw;}
+        .b-intro-txt{@include bIntroText();}
         &-inner{@include conSize(100%, 100%, null); position:relative;
             .float-txt-wrap{@include float();}
         }
@@ -141,7 +142,8 @@ a{text-decoration:none;}
             }
         }
     }
-    .section04{overflow:hidden;
+    .section04{position:relative; overflow:hidden;
+        .b2-intro-txt{@include bIntroText(); @include dis-flex(center, center, null); margin:0 0 0 -.5vw; font-size:calc(41vw - 10px); letter-spacing:-1vw}
         &-inner{
             .rl-banner{@include banner();}
             .float-txt-wrap{@include float(); height:44vw;
