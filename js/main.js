@@ -102,6 +102,7 @@ for(var i=0; i<workDiv.length; i++){
     workDiv[i].classList.add(`work-sticky-${i+1}`);
     workDiv[i].style.backgroundImage = `url('./img/work-${i+1}.png')`;
     workDiv[i].style.backgroundSize = 'contain';
+    workDiv[i].style.zIndex = 100 - i;
 }
 
 window.addEventListener('scroll', () => {
@@ -119,6 +120,8 @@ window.addEventListener('scroll', () => {
             RLbanner[i].style.transform = `translate3d(${window.scrollY / (window.innerHeight)}rem, 0, 0)`
         }
     }
+
+    
 });
 
 window.addEventListener('mousemove', (e) => {
@@ -136,5 +139,17 @@ window.addEventListener('mousewheel', (e) => {
         document.querySelector('.at-header').classList.add('hide');
     }else{
         document.querySelector('.at-header').classList.remove('hide');
+    }
+
+    // work 섹션
+    const workTxt = document.querySelectorAll('.work');
+    var test = 1;
+    const test_wheel = 0.1;
+    for(var i=0; i<workDiv.length; i++){
+        if(e.deltaY && workTxt[i].getBoundingClientRect().top < window.innerHeight / 2){
+            workDiv[i].style.transform = ` translate(-50%,-50%) translate3d(0, ${-100}vw, 0)`
+        }else{
+            workDiv[i].style.transform = `translate(-50%,-50%)`
+        }
     }
 });

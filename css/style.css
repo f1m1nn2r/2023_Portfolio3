@@ -427,6 +427,7 @@ a {
   transform: translate(-50%, -50%);
   overflow: hidden;
   border-radius: calc(1vw + 10px);
+  transition: all 0.8s ease;
 }
 .container_wide .section03-inner .sticky-wrap .sticky-box > div::before {
   content: "";
