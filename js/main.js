@@ -107,16 +107,24 @@ for(var i=0; i<workDiv.length; i++){
 
 const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+        const $target = entry.target;
+        const index = $target.getAttribute('data-work');
         if(entry.intersectionRatio > 0){
-            document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(5deg)'
-            workDiv[i].style.transform = `translate3d(0, -${100}vw, 0)`
+            console.log(index);
+
+            if(index % 2 === 1){
+                document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(5deg)';
+            }else if(index % 2 === 0){
+                document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)';
+            }
+            //workDiv[index].style.transform = `translate3d(0, -${100}vw, 0)`
         }else{
-            document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)'
+            //workDiv[index].style.transform = `translate3d(0, 0, 0)`
         }
     });
 });
 const $workTxts = document.querySelectorAll('.work');
-$workTxts.forEach((workTxt, i) => {
+$workTxts.forEach((workTxt) => {
     io.observe(workTxt);
 })
 

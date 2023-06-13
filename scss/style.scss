@@ -133,7 +133,7 @@ a{text-decoration:none;}
                         span{@include conSize(null, 2.5vw, 2.6vw); display:inline-block; padding:0 2vw; margin:2vw 0 0 0; @include font(1vw, 600, $mont, #000); background:$red;}
                     }
                 }
-                .sticky-box{@include conSize(64vw, 34vw, null); /*height:100vh;*/ @include dis-flex(center, center, null); position:sticky; top:50%; z-index:-1; transform:translateY(-50%) rotate(); margin:0 auto; transition:transform .3s ease;
+                .sticky-box{@include conSize(64vw, 34vw, null); /*height:100vh;*/ @include dis-flex(center, center, null); position:sticky; top:50%; z-index:-1; margin:0 auto; transition:transform .5s cubic-bezier(0.215, 0.61, 0.355, 1);
                     & > div{@include conSize(100%, 100%, null); position:absolute; /*@include position(absolute, 50%, null, null, 50%, null); transform:translate(-50%,-50%);*/ overflow:hidden; border-radius:calc(1vw + 10px); transition:all .8s ease;
                         &::before{content:""; @include conSize(100%, 100%, null); position:absolute; top:0; left:0; background:rgb(9 30 9 / 70%);}
                     }

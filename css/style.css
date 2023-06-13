@@ -538,13 +538,11 @@ a {
   position: sticky;
   top: 50%;
   z-index: -1;
-  -webkit-transform: translateY(-50%) rotate();
-          transform: translateY(-50%) rotate();
   margin: 0 auto;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .container_wide .section03-inner .sticky-wrap .sticky-box > div {
   width: 100%;
