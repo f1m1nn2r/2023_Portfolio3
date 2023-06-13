@@ -124,15 +124,17 @@ a{text-decoration:none;}
                 }
             }
             .sticky-wrap{position:relative; padding:10vw 0 0 0;
-                .work{height:50vw; text-align:center;
-                    p{line-height:1; @include bText();}
+                .work{height:100vw; text-align:center;
+                    p{line-height:1; margin:0 0 1vw 0; @include bText();
+                        span{display:block; margin:-1.5vw 0 0 0; font-size:5vw;}
+                    }
                     & > span{display:block; @include sText;}
                     a{
-                        span{@include conSize(null, 2.5vw, 2.6vw); display:inline-block; padding:0 2vw; margin:2vw 0 0 0; @include font(calc(1vw + 4px), 600, $mont, #000); background:$red;}
+                        span{@include conSize(null, 2.5vw, 2.6vw); display:inline-block; padding:0 2vw; margin:2vw 0 0 0; @include font(1vw, 600, $mont, #000); background:$red;}
                     }
                 }
-                .sticky-box{height:100vh; position:sticky; top:0; z-index:-1;
-                    & > div{@include conSize(58vw, 36vw, null); @include position(absolute, 50%, null, null, 50%, null); transform:translate(-50%,-50%); overflow:hidden; border-radius:calc(1vw + 10px); transition:all .8s ease;
+                .sticky-box{@include conSize(64vw, 34vw, null); /*height:100vh;*/ @include dis-flex(center, center, null); position:sticky; top:50%; z-index:-1; transform:translateY(-50%) rotate(); margin:0 auto; transition:transform .3s ease;
+                    & > div{@include conSize(100%, 100%, null); position:absolute; /*@include position(absolute, 50%, null, null, 50%, null); transform:translate(-50%,-50%);*/ overflow:hidden; border-radius:calc(1vw + 10px); transition:all .8s ease;
                         &::before{content:""; @include conSize(100%, 100%, null); position:absolute; top:0; left:0; background:rgb(9 30 9 / 70%);}
                     }
                 }

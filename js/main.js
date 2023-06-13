@@ -105,6 +105,21 @@ for(var i=0; i<workDiv.length; i++){
     workDiv[i].style.zIndex = 100 - i;
 }
 
+const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if(entry.intersectionRatio > 0){
+            document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(5deg)'
+            workDiv[i].style.transform = `translate3d(0, -${100}vw, 0)`
+        }else{
+            document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)'
+        }
+    });
+});
+const $workTxts = document.querySelectorAll('.work');
+$workTxts.forEach((workTxt, i) => {
+    io.observe(workTxt);
+})
+
 window.addEventListener('scroll', () => {
     // 첫 섹션 큰 텍스트 scale 커지는 효과
     const bIntroText = document.querySelector('.b-intro-txt');
@@ -120,8 +135,6 @@ window.addEventListener('scroll', () => {
             RLbanner[i].style.transform = `translate3d(${window.scrollY / (window.innerHeight)}rem, 0, 0)`
         }
     }
-
-    
 });
 
 window.addEventListener('mousemove', (e) => {
@@ -139,17 +152,5 @@ window.addEventListener('mousewheel', (e) => {
         document.querySelector('.at-header').classList.add('hide');
     }else{
         document.querySelector('.at-header').classList.remove('hide');
-    }
-
-    // work 섹션
-    const workTxt = document.querySelectorAll('.work');
-    var test = 1;
-    const test_wheel = 0.1;
-    for(var i=0; i<workDiv.length; i++){
-        if(e.deltaY && workTxt[i].getBoundingClientRect().top < window.innerHeight / 2){
-            workDiv[i].style.transform = ` translate(-50%,-50%) translate3d(0, ${-100}vw, 0)`
-        }else{
-            workDiv[i].style.transform = `translate(-50%,-50%)`
-        }
     }
 });
