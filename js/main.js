@@ -2,15 +2,14 @@
 const menu = document.querySelector('.at-header ul');
 menu.addEventListener('click', (e) => {
     // 클릭한 메뉴의 dataset 값을 구하고, scrollMenu로 구한 dataset 값의 선택자를 찾아감
-    const thisMenu = e.target;
-    const menuValue = thisMenu.dataset.menu;
+    const menuValue = e.target.dataset.menu;
     const scrollMenu = document.querySelector(menuValue);
     scrollMenu.scrollIntoView({
         behavior:'smooth'
     });
 });
 
-// 첫, 마지막 섹션 인트로 텍스트 반복문으로 추가
+// 반복되는 태그의 경우 for문으로 추가
 for(var i=0; i<15; i++){
     const firstTemplate = 
     `   
@@ -62,33 +61,43 @@ for(var i=0; i<15; i++){
         </div>
     </div>
     `
+
+    const firstBanner = 
+    `
+        <p>ABOUT ME</p>
+        <p class="stroke">SKILS</p>
+    `
+
+    const lastBanner = 
+    `
+        <p>CONTACT</p>
+        <p class="stroke">ME</p>
+    `
     document.querySelector('.section01-inner .float-txt-wrap').insertAdjacentHTML('beforeend', firstTemplate);
     document.querySelector('.section04-inner .float-txt-wrap').insertAdjacentHTML('beforeend', lastTemplate);
+    document.querySelector('.section02-inner .rl-banner-inner').insertAdjacentHTML('beforeend', firstBanner);
+    document.querySelector('.section04-inner .rl-banner-inner').insertAdjacentHTML('beforeend', lastBanner);
 }
 
 // introduce, career 클릭 시 컨텐츠 변경
 const toggleLi =  document.querySelectorAll('.toggle-tab li');
 const toggleContent = document.querySelectorAll('.toggle-content li');
-function toggleActive(toggleLi){
-    for(var i=0; i<toggleLi.length; i++){
-        toggleLi[i].addEventListener('click', () => {
-            var thisTab = this;
-            for(var i=0; i<toggleLi.length; i++){
-                if(thisTab != toggleLi[i]){
-                    toggleLi[i].classList.remove('active');
-                    toggleContent[i].classList.remove('active');
-                }else if(thisTab.classList.contains('active') === true){
-                    thisTab.classList.remove('active');
-                    toggleContent[i].classList.remove('active');
-                }else{
-                    thisTab.classList.add('active');
-                    toggleContent[i].classList.add('active');
-                }
-            }
-        })
+document.querySelector('.section02-inner .top-column').addEventListener('click', (e) => {
+    const thisTab = e.target.dataset.tab;
+    //console.log(thisTab);
+    if(thisTab){
+        toggleLi.forEach((li) => {
+            li.classList.remove('active');
+        });
+        e.target.classList.add('active');
+
+        toggleContent.forEach((content) => {
+            content.classList.remove('active');
+        });
+        document.getElementById(thisTab).classList.add("active");
+        document.querySelector('.show-txt').innerText = thisTab;
     }
-}
-toggleActive(toggleLi);
+}); 
 
 // work 섹션 작업물 div 및 img 추가
 const stickyBox = document.querySelector('.sticky-box');
@@ -101,9 +110,39 @@ const workDiv = document.querySelectorAll('.work-sticky');
 for(var i=0; i<workDiv.length; i++){
     workDiv[i].classList.add(`work-sticky-${i+1}`);
     workDiv[i].style.backgroundImage = `url('./img/work-${i+1}.png')`;
-    workDiv[i].style.backgroundSize = 'contain';
+    workDiv[i].style.backgroundSize = 'cover';
     workDiv[i].style.zIndex = 100 - i;
 }
+
+const portfolio = [
+    {name:'HANKUK PACKGE', subName:'', level:'퍼블리싱 참여도 100%(영문, 일문 페이지 제외)', date:'제작 소요일 2023. 03. 13 ~ 2023. 03. 21', link:'https://www.hkpak.co.kr/'},
+    {name:'HEYAN', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2023. 02. 15 ~ 2023. 02. 22', link:'https://www.thinkhyean.com/'},
+    {name:'THE BLUE', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2023. 02. 01 ~ 2023. 02. 10', link:'http://thebluecc.com/'},
+    {name:'SAY RNELL', subName:'', level:'퍼블리싱 참여도 100%(영문 페이지 포함)', date:'제작 소요일 2023. 01. 09 ~ 2023. 01. 20', link:'http://sayrnell.com/'},
+    {name:'Data Sicence Plus', subName:'Seoul National University', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 12. 08 ~ 2022. 12. 14', link:'http://dsplus.uos.ac.kr/'},
+    {name:'GLOPID-R KOREA', subName:'', level:'퍼블리싱 참여도 100%(GloPID-R 소개 페이지 제외)', date:'제작 소요일 2022. 11. 23 ~ 2022. 11. 30', link:'https://www.glopid-r-korea.kr/'},
+    {name:'Data Sicence Plus', subName:'Korea University', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 11. 02 ~ 2022. 11. 10', link:'http://dsplusku.org/'},
+    {name:'CHEONGGOK', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 10. 14 ~ 2022. 10. 19', link:'http://www.cheonggok.com/'},
+    {name:'KP-TECH', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 09. 29 ~ 2022. 10. 11', link:'http://www.kochemnet.com/'},
+    {name:'DCUBE MALL', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 07. 25 ~ 2022. 07. 28', link:'http://dcubemall.co.kr/'},
+    {name:'ASETEC', subName:'', level:'퍼블리싱 참여도 100%(영문 페이지 제외)', date:'제작 소요일 2022. 06. 27 ~ 2022. 07. 08', link:'http://asetec.co.kr/'},
+    {name:'EOBOOKS', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 06. 13 ~ 2022. 06. 20', link:'fs220615.dothome.co.kr'},
+    {name:'CHUNGRIM', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 05. 30 ~ 2022. 06. 07', link:'https://www.chungrim.com/'},
+    {name:'WINNOVA', subName:'', level:'퍼블리싱 참여도 100%(영문 페이지 제외)', date:'제작 소요일 2022. 04. 01 ~ 2022. 04. 15', link:'http://winnova.co.kr/'},
+    {name:'CHANGHC', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 03. 24 ~ 2022. 03. 28', link:'https://www.changhc.com/'}
+]
+portfolio.forEach((data, index) => {
+    const portfolioTemplate =
+    `
+    <div class="work work-${index+1}" data-work='${index}'>
+        <p>${portfolio[index].name}<span>${portfolio[index].subName}</span></p>
+        <span>${portfolio[index].level}</span>
+        <span>${portfolio[index].date}</span>
+        <a href="${portfolio[index].link}" target="_blank"><span>MORE</span></a>
+    </div>
+    `
+    document.querySelector('.section03-inner .sticky-wrap').insertAdjacentHTML('beforeend', portfolioTemplate);
+});
 
 const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -118,15 +157,13 @@ const io = new IntersectionObserver((entries) => {
                 document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)';
             }
             //workDiv[index].style.transform = `translate3d(0, -${100}vw, 0)`
-        }else{
-            //workDiv[index].style.transform = `translate3d(0, 0, 0)`
         }
     });
 });
 const $workTxts = document.querySelectorAll('.work');
 $workTxts.forEach((workTxt) => {
     io.observe(workTxt);
-})
+});
 
 window.addEventListener('scroll', () => {
     // 첫 섹션 큰 텍스트 scale 커지는 효과
@@ -138,9 +175,9 @@ window.addEventListener('scroll', () => {
     const RLbanner = document.querySelectorAll('.rl-banner-inner');
     for(var i=0; i<RLbanner.length; i++){
         if(i % 2 == 0){
-            RLbanner[i].style.transform = `translate3d(${-window.scrollY / document.querySelector('.at-header').clientHeight}rem, 0, 0)`
+            RLbanner[i].style.transform = `translate3d(${window.scrollY / document.querySelector('.at-header').clientHeight}rem, 0, 0)`
         }else if(i % 2 == 1){
-            RLbanner[i].style.transform = `translate3d(${window.scrollY / (window.innerHeight)}rem, 0, 0)`
+            RLbanner[i].style.transform = `translate3d(${300 -(window.scrollY / 2) / (document.querySelector('.at-header').offsetHeight)}rem, 0, 0)`
         }
     }
 });
