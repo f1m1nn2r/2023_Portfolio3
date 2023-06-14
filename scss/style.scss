@@ -246,9 +246,10 @@ a{text-decoration:none;}
                         }
                     }
                 }
-                .sticky-box{@include conSize(64vw, 34vw, null); /*height:100vh;*/ @include dis-flex(center, center, null); position:sticky; top:50%; z-index:-1; margin:0 auto; transition:transform .5s cubic-bezier(0.215, 0.61, 0.355, 1);
-                    & > div{@include conSize(100%, 100%, null); position:absolute; /*@include position(absolute, 50%, null, null, 50%, null); transform:translate(-50%,-50%);*/ overflow:hidden; border-radius:calc(1vw + 10px); transition:all .8s ease;
+                .sticky-box{@include conSize(64vw, 34vw, null); @include dis-flex(center, center, null); position:sticky; top:50%; z-index:-1; margin:0 auto; transition:transform .5s cubic-bezier(0.215, 0.61, 0.355, 1);
+                    & > div{@include conSize(100%, 100%, null); position:absolute; overflow:hidden; border-radius:calc(1vw + 10px); transition:all .8s ease;
                         &::before{content:""; @include conSize(100%, 100%, null); position:absolute; top:0; left:0; background:rgb(9 30 9 / 70%);}
+                        @include responsive-480(){transition:all 1.3s ease;}
                     }
                     @include responsive-991(){@include conSize(80vw, 52vw, null);}
                     @include responsive-480(){@include conSize(90vw, 60vw, null)}
@@ -298,14 +299,6 @@ a{text-decoration:none;}
                     @include responsive-480(){font-size:14px;}
                 }
                 ul{@include borderUl();
-                    /*
-                    li{background:$red; border-radius:5vw;
-                        a{@include conSize(null, 2vw, 2vw); display:block; padding:0 1vw; @include font(1vw, 600, $mont, #000);
-                            @include responsive-1400(){@include conSize(null, 3vw, 3vw); padding:0 1.2vw; font-size:calc(1vw + 5px);}
-                            @include responsive-991(){@include conSize(null, 5vw, 5vw); padding:0 2.5vw; font-size:2vw;}
-                            @include responsive-480(){@include conSize(null, 25px, 25px); padding:0 12px; font-size:13px;}
-                        }
-                    }*/
                     li{background:$red;
                         a{color:#000;}
                     }
