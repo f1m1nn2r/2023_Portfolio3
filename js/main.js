@@ -1,3 +1,15 @@
+// 모바일 pc 구분 스크립트, 출처 https://pjw48.net/wordpress/2017/02/11/mobilecheck-js/
+function isMobile(){
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+if(isMobile()){
+    const section = document.querySelectorAll('.section');
+    section.forEach((itSection) => {
+        itSection.classList.add('mobile');
+    });
+    //document.querySelector('.section01').classList.add('height');
+}
+
 // 헤더 메뉴 클릭 시 섹션 이동
 const menu = document.querySelector('.at-header ul');
 menu.addEventListener('click', (e) => {
@@ -175,9 +187,9 @@ window.addEventListener('scroll', () => {
     const RLbanner = document.querySelectorAll('.rl-banner-inner');
     for(var i=0; i<RLbanner.length; i++){
         if(i % 2 == 0){
-            RLbanner[i].style.transform = `translate3d(${window.scrollY / document.querySelector('.at-header').clientHeight}rem, 0, 0)`
+            RLbanner[i].style.transform = `translate3d(${window.scrollY / document.querySelector('.at-header').clientHeight}rem, 0, 0) translateY(-50%)`
         }else if(i % 2 == 1){
-            RLbanner[i].style.transform = `translate3d(${300 -(window.scrollY / 2) / (document.querySelector('.at-header').offsetHeight)}rem, 0, 0)`
+            RLbanner[i].style.transform = `translate3d(${300 -(window.scrollY / 2) / (document.querySelector('.at-header').offsetHeight)}rem, 0, 0) translateY(-50%)`
         }
     }
 });

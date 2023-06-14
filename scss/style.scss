@@ -3,6 +3,15 @@ $mont:'Montserrat', sans-serif;
 $noto:'Noto Sans KR', sans-serif;
 $koul:'Koulen', cursive;
 $red:rgb(0, 144, 0);
+$floatY:2.5vw;
+:root{
+    --float-y:#{$floatY};
+}
+@media(max-width:720px){
+    :root{
+        --float-y:5vw;
+    }
+}
 
 body{margin:0; padding:0; overflow-x:hidden; background:#000;}
 *{margin:0; padding:0; box-sizing:border-box; color:$red;}
@@ -15,6 +24,12 @@ a{text-decoration:none;}
 @mixin responsive-991(){
     @media(max-width:991px){@content;}
 }
+@mixin responsive-720(){
+    @media(max-width:720px){@content;}
+}
+@mixin responsive-480(){
+    @media(max-width:480px){@content;}
+}
 
 @mixin conSize($wd:null, $hg:null, $lh:null){width:$wd; height:$hg; line-height:$lh;}
 @mixin font($fs:null, $fw:null, $ff:null, $color:null){font-size:$fs; font-weight:$fw; font-family:$ff; color:$color;}
@@ -26,15 +41,16 @@ a{text-decoration:none;}
 }
 @mixin sText(){@include font(calc(1vw + 4px), 400, $noto, null);
     @include responsive-991(){font-size:calc(2vw + 5px);}
+    @include responsive-480(){font-size:14px;}
 }
 @mixin float(){@include conSize(100%, 100%, null); @include dis-flex(center, center, null); position:relative;
     .float-txt{line-height:1; @include dis-flex(null, null, null); gap:2vw; position:absolute;
         span{display:inline-block; @include bText(); animation:float 10s ease-in-out infinite alternate; color:$red;
             @keyframes float{
                 0%{transform: translateY(0) rotate(3deg)}
-                25%{transform:translateY(2.5vw)}
+                25%{transform:translateY(var(--float-y))}
                 50%{transform:translateY(0) rotate(6deg)}
-                75%{transform:translateY(2.5vw)}
+                75%{transform:translateY(var(--float-y))}
                 100%{transform:translateY(0) rotate(3deg)}
             }
             
@@ -51,15 +67,27 @@ a{text-decoration:none;}
     }
 }
 @mixin banner(){height:4vw; position:relative; overflow:hidden; border:1px solid rgba(0, 144, 0, .5); border-left:0; border-right:0;
-    &-inner{width:100%; @include dis-flex(null, null, null); position:absolute; 
+    &-inner{width:100%; @include dis-flex(null, null, null); position:absolute; top:50%; 
         p{margin:0 .5vw; white-space:nowrap; @include font(3vw, 600, $mont, null);
             @include responsive-991{margin:0 1vw; font-size:6vw;}
+            @include responsive-480(){font-size:25px;}
         }
     }
     @include responsive-991(){height:8vw}
+    @include responsive-720(){height:55px;}
+    @include responsive-480(){height:35px;}
 }
 @mixin bIntroText(){@include conSize(100%, 100%, .9); @include dis-flex(null, null, null); position:absolute; z-index:-1; @include font(58vw, null, $koul, #000); letter-spacing:-2vw;
     span{display:block; color:transparent;}
+}
+@mixin borderUl(){@include dis-flex(null, null, null); gap:.7vw;
+    li{@include conSize(null, 2vw, 2vw); padding:0 .8vw; @include font(1vw, 600, $mont, $red); border:1px solid rgba(0, 144, 0, .5); border-radius:5vw; cursor:pointer;
+        @include responsive-1400(){@include conSize(null, 3vw, 3vw); padding:0 1.2vw; font-size:calc(1vw + 5px);}
+        @include responsive-991(){@include conSize(null, 5vw, 5vw); padding:0 2.5vw; font-size:calc(2vw + 4px);}
+        @include responsive-720(){@include conSize(null, 6vw, 6vw); padding:0 3vw; font-size:3vw;}
+        @include responsive-480(){@include conSize(null, 25px, 25px); padding:0 12px; font-size:12px;}
+    }
+    @include responsive-991(){gap:2vw;}
 }
 
 @supports(-webkit-text-stroke:1px $red){
@@ -77,16 +105,21 @@ a{text-decoration:none;}
                 @include responsive-991(){font-size:2vw}
             }
             @include responsive-1400(){padding:0.7vw 1.5vw;}
+            @include responsive-720(){display:none;}
         }
         ul{@include dis-flex(null, null, null); gap:2.4vw;
             li{cursor:pointer;
                 a{@include font(1vw, 600, $mont, null);
                     @include responsive-1400(){font-size:calc(1vw + 5px);}
                     @include responsive-991(){font-size:2vw}
+                    @include responsive-720(){font-size:3vw}
+                    @include responsive-480(){font-size:13px;}
                 }
             }
             @include responsive-991{gap:5vw;}
         }
+        @include responsive-720(){justify-content:flex-end;}
+        @include responsive-480(){padding:0 15px;}
     }
     &.hide{top:4vw; opacity:0; visibility:hidden;}
 }
@@ -101,10 +134,19 @@ a{text-decoration:none;}
                     & > div{
                         @include responsive-991(){width:100%; text-align:center;}
                     }
+                    span{
+                        @include responsive-720(){
+                            font-size:24vw; letter-spacing:-1.5vw
+                        }
+                    }
                 }
             }
         }
         @include responsive-991{height:130vw;}
+        &.mobile{height:100vh;
+            .b-intro-txt{font-size:120vw;}
+            
+        }
     }
     .section02{
         &-inner{
@@ -114,42 +156,59 @@ a{text-decoration:none;}
                 }
             }
             .content-box{@include dis-flex(null, null, null); border-bottom:1px solid rgba(0, 144, 0, .5);
-                & > div{flex:1; padding:2.5vw;}
+                & > div{flex:1; padding:2.5vw;
+                    @include responsive-991(){padding:4vw 2.5vw;}
+                }
                 .left-column{border-right:1px solid rgba(0, 144, 0, .5);
                     .tit-box{
                         p{line-height:.8; @include dis-flex(null, null, null); gap:2vw;
                             span{@include bText();}
                         }
                     }
-                    .star{text-align:right;}
+                    .star{text-align:right;
+                        @include responsive-720(){
+                            img{width:auto; height:39vw;}
+                        }
+                    }
                     @include responsive-991(){border-right:0; border-bottom:1px solid rgba(0, 144, 0, 0.5);}
                 }
                 .right-column{@include dis-flex(null, space-between, column);
                     .top-column{@include dis-flex(null, space-between, null);
-                        ul{@include dis-flex(null, null, null); gap:.7vw;
-                            li{@include conSize(null, 2vw, 2vw); padding:0 .8vw; @include font(1vw, 600, $mont, $red); border:1px solid rgba(0, 144, 0, .5); border-radius:5vw; cursor:pointer; 
+                        ul{@include borderUl();
+                            li{
                                 &.active{background:$red; border:none; color:#000;}
-                                @include responsive-1400(){@include conSize(null, 3vw, 3vw); padding:0 1.2vw; font-size:calc(1vw + 5px);}
-                                @include responsive-991(){@include conSize(null, 5vw, 5vw); padding:0 2.5vw; font-size:calc(2vw + 4px);}
                             }
-                            @include responsive-991(){gap:2vw;}
                         }
                         div{@include dis-flex(center, center, column); gap:1vw;
-                            .square{@include conSize(1vw, 1vw, null); transform:rotate(45deg); background:$red;}
+                            .square{@include conSize(1vw, 1vw, null); transform:rotate(45deg); background:$red;
+                                @include responsive-991(){@include conSize(calc(2vw + 5px), calc(2vw + 5px), null);}
+                            }
                             span{transform:scale(-1); writing-mode:vertical-lr; @include font(1.5vw, 400, $mont, null);
                                 @include responsive-1400(){font-size:calc(1.5vw + 5px);}
                                 @include responsive-991(){font-size:calc(2.5vw + 5px);}
+                                @include responsive-720(){font-size:calc(4vw + 3px);}
+                                @include responsive-480(){font-size:16px;}
                             }
+                            @include responsive-720(){gap:2vw;}
                         }
                     }
                     .bottom-column{position:realtive;
                         ul{width:100%; 
                             li{position:absolute; opacity:0; visibility:hidden;
                                 p, span{@include sText();}
-                                span{display:block; text-align:right;}
+                                span{display:block; text-align:right;
+                                    @include responsive-480(){text-align:left}
+                                }
                                 div{@include dis-flex(null, null, null);
-                                    span{width:30%;}
-                                    p{width:70%; text-align:right;}
+                                    span{width:30%;
+                                        @include responsive-480(){width:100%}
+                                    }
+                                    p{width:70%; text-align:right;
+                                        @include responsive-480(){width:100%; text-align:left;}
+                                    }
+                                    @include responsive-480(){flex-flow:column; margin:0 0 10px 0;
+                                        &:last-child{margin:0;}
+                                    }
                                 }
                                 &.active{position:static; opacity:1; visibility:visible;}
                             }
@@ -168,7 +227,7 @@ a{text-decoration:none;}
                     span{display:block;}
                     &:not(:first-child){text-align:right;}
                 }
-                @include responsive-991(){height:100vw; padding:0 2.5vw}
+                @include responsive-991(){height:100vw; row-gap:5vw; padding:0 2.5vw;}
             }
             .sticky-wrap{position:relative; padding:10vw 0 0 0;
                 .work{height:100vw; text-align:center;
@@ -177,11 +236,13 @@ a{text-decoration:none;}
                             @include responsive-991(){font-size:7vw;}
                         }
                         @include responsive-991(){margin:0 0 3vw 0; font-size:18vw;}
+                        @include responsive-480(){font-size:60px;}
                     }
                     & > span{display:block; @include sText;}
                     a{
                         span{@include conSize(null, 2.5vw, 2.6vw); display:inline-block; padding:0 2vw; margin:2vw 0 0 0; @include font(1vw, 600, $mont, #000); background:$red;
                             @include responsive-991(){@include conSize(null, 5vw, 5vw); padding:0 4vw; font-size:calc(2vw + 2px);}
+                            @include responsive-480(){@include conSize(null, 25px, 24px); padding:0 20px; margin:15px 0 0 0; font-size:12px;}
                         }
                     }
                 }
@@ -190,6 +251,14 @@ a{text-decoration:none;}
                         &::before{content:""; @include conSize(100%, 100%, null); position:absolute; top:0; left:0; background:rgb(9 30 9 / 70%);}
                     }
                     @include responsive-991(){@include conSize(80vw, 52vw, null);}
+                    @include responsive-480(){@include conSize(90vw, 60vw, null)}
+                }
+            }
+        }
+        &.mobile{
+            .section03-inner{
+                .sticky-wrap{
+                    .work{height:100vh;}
                 }
             }
         }
@@ -197,6 +266,7 @@ a{text-decoration:none;}
     .section04{position:relative; overflow:hidden;
         .b2-intro-txt{@include bIntroText(); @include dis-flex(center, center, null); margin:0 0 0 -.5vw; font-size:calc(41vw - 10px); letter-spacing:-1vw;
             @include responsive-991(){font-size:calc(44vw - 10px);}
+            @include responsive-480(){font-size:47vw;}
         }
         &-inner{
             .rl-banner{@include banner();
@@ -206,7 +276,9 @@ a{text-decoration:none;}
             }
             .float-txt-wrap{@include float(); height:44vw;
                 .float-txt{
-                    span{letter-spacing:calc(-1vw + 10px);}
+                    span{letter-spacing:calc(-1vw + 10px);
+                        @include responsive-720(){font-size:24vw; letter-spacing:-1.5vw;}
+                    }
                     @include responsive-1400(){
                         & > div{
                             &:first-child{margin:0 4vw 0 0;}
@@ -215,22 +287,37 @@ a{text-decoration:none;}
                 }
                 @include responsive-1400(){height:50vw;}
                 @include responsive-991(){height:80vw;}
+                @include responsive-720(){height:100vw;}
             }
             .info-box{@include dis-flex(center, space-between, null); padding:0 2.5vw 2vw;
                 p{@include sText(); font-size:1vw;
                     span{display:block;}
                     @include responsive-1400(){font-size:calc(1vw + 4px)}
                     @include responsive-991(){font-size:2vw;}
+                    @include responsive-720(){font-size:calc(2vw + 5px);}
+                    @include responsive-480(){font-size:14px;}
                 }
-                ul{@include dis-flex(center, null, null); gap:1vw;
+                ul{@include borderUl();
+                    /*
                     li{background:$red; border-radius:5vw;
                         a{@include conSize(null, 2vw, 2vw); display:block; padding:0 1vw; @include font(1vw, 600, $mont, #000);
                             @include responsive-1400(){@include conSize(null, 3vw, 3vw); padding:0 1.2vw; font-size:calc(1vw + 5px);}
                             @include responsive-991(){@include conSize(null, 5vw, 5vw); padding:0 2.5vw; font-size:2vw;}
+                            @include responsive-480(){@include conSize(null, 25px, 25px); padding:0 12px; font-size:13px;}
                         }
+                    }*/
+                    li{background:$red;
+                        a{color:#000;}
                     }
+                    @include responsive-480(){gap:7px;}
                 }
                 @include responsive-991(){@include dis-flex(flex-start, null, column); row-gap:2vw;}
+                @include responsive-480(){padding:0 15px 30px;}
+            }
+        }
+        &.mobile{
+            .section04-inner{
+                .float-txt-wrap{height:80vh;}
             }
         }
     }
