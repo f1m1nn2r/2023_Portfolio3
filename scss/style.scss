@@ -9,7 +9,7 @@ $floatY:2.5vw;
 }
 @media(max-width:720px){
     :root{
-        --float-y:5vw;
+        --float-y:7vw;
     }
 }
 
@@ -317,7 +317,7 @@ a{text-decoration:none;}
         }
         &.mobile{
             .section04-inner{
-                .float-txt-wrap{height:80vh;}
+                .float-txt-wrap{height:70vh;}
             }
         }
     }

@@ -5,7 +5,7 @@
 
 @media (max-width: 720px) {
   :root {
-    --float-y:5vw;
+    --float-y:7vw;
   }
 }
 body {
@@ -1412,5 +1412,5 @@ a {
   }
 }
 .container_wide .section04.mobile .section04-inner .float-txt-wrap {
-  height: 80vh;
+  height: 70vh;
 }

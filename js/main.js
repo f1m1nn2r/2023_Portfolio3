@@ -186,10 +186,18 @@ window.addEventListener('scroll', () => {
     // 롤링 배너 스크롤에 따라 움직이도록
     const RLbanner = document.querySelectorAll('.rl-banner-inner');
     for(var i=0; i<RLbanner.length; i++){
-        if(i % 2 == 0){
-            RLbanner[i].style.transform = `translate3d(${window.scrollY / document.querySelector('.at-header').clientHeight}rem, 0, 0) translateY(-50%)`
-        }else if(i % 2 == 1){
-            RLbanner[i].style.transform = `translate3d(${300 -(window.scrollY / 2) / (document.querySelector('.at-header').offsetHeight)}rem, 0, 0) translateY(-50%)`
+        if(!isMobile()){
+            if(i % 2 == 0){
+                RLbanner[i].style.transform = `translate3d(${window.scrollY / document.querySelector('.at-header').clientHeight}rem, 0, 0) translateY(-50%)`
+            }else if(i % 2 == 1){
+                RLbanner[i].style.transform = `translate3d(${300 -(window.scrollY / 2) / (document.querySelector('.at-header').offsetHeight)}rem, 0, 0) translateY(-50%)`
+            }
+        }else{
+            if(i % 2 == 0){
+                RLbanner[i].style.transform = `translate3d(${window.scrollY / (document.querySelector('.section01').clientHeight / 3)}rem, 0, 0) translateY(-50%)`
+            }else if(i % 2 == 1){
+                RLbanner[i].style.transform = `translate3d(${-(window.scrollY / (document.querySelector('.section01').clientHeight / 3))}rem, 0, 0) translateY(-50%)`
+            }
         }
     }
 });
