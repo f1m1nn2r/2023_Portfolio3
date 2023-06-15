@@ -929,8 +929,10 @@ a {
   position: absolute;
   overflow: hidden;
   border-radius: calc(1vw + 10px);
-  -webkit-transition: all 0.8s ease;
-  transition: all 0.8s ease;
+  -webkit-transition: z-index 0.15s ease, -webkit-transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: z-index 0.15s ease, -webkit-transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), z-index 0.15s ease;
+  transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), z-index 0.15s ease, -webkit-transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .container_wide .section03-inner .sticky-wrap .sticky-box > div::before {
   content: "";

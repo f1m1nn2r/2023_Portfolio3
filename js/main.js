@@ -13,7 +13,7 @@ if(isMobile()){
 // 헤더 메뉴 클릭 시 섹션 이동
 const menu = document.querySelector('.at-header ul');
 menu.addEventListener('click', (e) => {
-    // 클릭한 메뉴의 dataset 값을 구하고, scrollMenu로 구한 dataset 값의 선택자를 찾아감
+    // 클릭한 메뉴의 dataset 값을 구하고, scrollMenu로 구한 dataset 값의 선택자를 찾아가도록
     const menuValue = e.target.dataset.menu;
     const scrollMenu = document.querySelector(menuValue);
     scrollMenu.scrollIntoView({
@@ -121,9 +121,9 @@ for(var i=0; i<15; i++){
 const workDiv = document.querySelectorAll('.work-sticky');
 for(var i=0; i<workDiv.length; i++){
     workDiv[i].classList.add(`work-sticky-${i+1}`);
-    workDiv[i].style.backgroundImage = `url('./img/work-${i+1}.png')`;
+    workDiv[i].style.backgroundImage = `url('../img/work-${i+1}.PNG')`;
     workDiv[i].style.backgroundSize = 'cover';
-    workDiv[i].style.zIndex = 100 - i;
+    //workDiv[i].style.zIndex = 100 - i;
 }
 
 const portfolio = [
@@ -140,7 +140,7 @@ const portfolio = [
     {name:'ASETEC', subName:'', level:'퍼블리싱 참여도 100%(영문 페이지 제외)', date:'제작 소요일 2022. 06. 27 ~ 2022. 07. 08', link:'http://asetec.co.kr/'},
     {name:'EOBOOKS', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 06. 13 ~ 2022. 06. 20', link:'fs220615.dothome.co.kr'},
     {name:'CHUNGRIM', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 05. 30 ~ 2022. 06. 07', link:'https://www.chungrim.com/'},
-    {name:'WINNOVA', subName:'', level:'퍼블리싱 참여도 100%(영문 페이지 제외)', date:'제작 소요일 2022. 04. 01 ~ 2022. 04. 15', link:'http://winnova.co.kr/'},
+    {name:'WINNOVA', subName:'', level:'퍼블리싱 참여도 100%(영문 페이지 포함)', date:'제작 소요일 2022. 04. 01 ~ 2022. 04. 15', link:'http://winnova.co.kr/'},
     {name:'CHANGHC', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2022. 03. 24 ~ 2022. 03. 28', link:'https://www.changhc.com/'}
 ]
 portfolio.forEach((data, index) => {
@@ -160,15 +160,20 @@ const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         const $target = entry.target;
         const index = $target.getAttribute('data-work');
-        if(entry.intersectionRatio > 0){
-            console.log(index);
-
-            if(index % 2 === 1){
-                document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(5deg)';
-            }else if(index % 2 === 0){
-                document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)';
+        const workDivs = document.querySelectorAll('.work-sticky'); 
+        for(var i=0; i<workDivs.length; i++){
+            if(entry.intersectionRatio >= 0 && entry.isIntersecting ){
+                workDivs[index].style.zIndex = 100 + index;
+                //console.log(index);
+                if(index % 2 == 1){
+                    document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(5deg)';
+                    
+                }else if(index % 2 == 0){
+                    document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)';
+                }
+            }else{
+                workDivs[index].style.zIndex = 100 - index
             }
-            //workDiv[index].style.transform = `translate3d(0, -${100}vw, 0)`
         }
     });
 });

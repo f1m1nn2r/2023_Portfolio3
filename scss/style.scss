@@ -247,7 +247,7 @@ a{text-decoration:none;}
                     }
                 }
                 .sticky-box{@include conSize(64vw, 34vw, null); @include dis-flex(center, center, null); position:sticky; top:50%; z-index:-1; margin:0 auto; transition:transform .5s cubic-bezier(0.215, 0.61, 0.355, 1);
-                    & > div{@include conSize(100%, 100%, null); position:absolute; overflow:hidden; border-radius:calc(1vw + 10px); transition:all .8s ease;
+                    & > div{@include conSize(100%, 100%, null); position:absolute; overflow:hidden; border-radius:calc(1vw + 10px); transition:transform .8s cubic-bezier(0.215, 0.61, 0.355, 1), z-index .15s ease;
                         &::before{content:""; @include conSize(100%, 100%, null); position:absolute; top:0; left:0; background:rgb(9 30 9 / 70%);}
                         @include responsive-480(){transition:all 1.3s ease;}
                     }
