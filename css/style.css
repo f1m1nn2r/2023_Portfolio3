@@ -714,6 +714,7 @@ a {
 }
 @media (max-width: 480px) {
   .container_wide .section02-inner .content-box .right-column .bottom-column ul li span {
+    font-size: 13px;
     text-align: left;
   }
 }

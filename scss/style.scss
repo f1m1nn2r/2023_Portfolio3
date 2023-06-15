@@ -197,7 +197,7 @@ a{text-decoration:none;}
                             li{position:absolute; opacity:0; visibility:hidden;
                                 p, span{@include sText();}
                                 span{display:block; text-align:right;
-                                    @include responsive-480(){text-align:left}
+                                    @include responsive-480(){font-size:13px; text-align:left;}
                                 }
                                 div{@include dis-flex(null, null, null);
                                     span{width:30%;
