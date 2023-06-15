@@ -121,7 +121,7 @@ for(var i=0; i<15; i++){
 const workDiv = document.querySelectorAll('.work-sticky');
 for(var i=0; i<workDiv.length; i++){
     workDiv[i].classList.add(`work-sticky-${i+1}`);
-    workDiv[i].style.backgroundImage = `url('../img/work-${i+1}.PNG')`;
+    workDiv[i].style.backgroundImage = `url('./img/work-${i+1}.PNG')`;
     workDiv[i].style.backgroundSize = 'cover';
     //workDiv[i].style.zIndex = 100 - i;
 }
@@ -172,7 +172,7 @@ const io = new IntersectionObserver((entries) => {
                     document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(-5deg)';
                 }
             }else{
-                workDivs[index].style.zIndex = 100 - index
+                workDivs[index].style.zIndex = 100 - index;
             }
         }
     });
