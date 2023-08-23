@@ -290,11 +290,20 @@ a{text-decoration:none;}
                 @include responsive-991(){height:80vw;}
                 @include responsive-720(){height:100vw;}
             }
+        }
+        &.mobile{
+            .section04-inner{
+                .float-txt-wrap{height:70vh;}
+            }
+        }
+    }
+    footer{
+        .footer-inner{
             .info-box{@include dis-flex(center, space-between, null); padding:0 2.5vw 2vw;
                 p{@include sText(); font-size:1vw;
                     span{display:block;}
                     @include responsive-1400(){font-size:calc(1vw + 4px)}
-                    @include responsive-991(){font-size:2vw;}
+                    @include responsive-991(){font-size:calc(2vw + 4px);}
                     @include responsive-720(){font-size:calc(2vw + 5px);}
                     @include responsive-480(){font-size:14px;}
                 }
@@ -306,11 +315,6 @@ a{text-decoration:none;}
                 }
                 @include responsive-991(){@include dis-flex(flex-start, null, column); row-gap:2vw;}
                 @include responsive-480(){padding:0 15px 30px;}
-            }
-        }
-        &.mobile{
-            .section04-inner{
-                .float-txt-wrap{height:70vh;}
             }
         }
     }

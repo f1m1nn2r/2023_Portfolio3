@@ -1274,7 +1274,10 @@ a {
     height: 100vw;
   }
 }
-.container_wide .section04-inner .info-box {
+.container_wide .section04.mobile .section04-inner .float-txt-wrap {
+  height: 70vh;
+}
+.container_wide footer .footer-inner .info-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1286,52 +1289,52 @@ a {
           justify-content: space-between;
   padding: 0 2.5vw 2vw;
 }
-.container_wide .section04-inner .info-box p {
+.container_wide footer .footer-inner .info-box p {
   font-size: calc(1vw + 4px);
   font-weight: 400;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1vw;
 }
 @media (max-width: 991px) {
-  .container_wide .section04-inner .info-box p {
+  .container_wide footer .footer-inner .info-box p {
     font-size: calc(2vw + 5px);
   }
 }
 @media (max-width: 480px) {
-  .container_wide .section04-inner .info-box p {
+  .container_wide footer .footer-inner .info-box p {
     font-size: 14px;
   }
 }
-.container_wide .section04-inner .info-box p span {
+.container_wide footer .footer-inner .info-box p span {
   display: block;
 }
 @media (max-width: 1400px) {
-  .container_wide .section04-inner .info-box p {
+  .container_wide footer .footer-inner .info-box p {
     font-size: calc(1vw + 4px);
   }
 }
 @media (max-width: 991px) {
-  .container_wide .section04-inner .info-box p {
-    font-size: 2vw;
+  .container_wide footer .footer-inner .info-box p {
+    font-size: calc(2vw + 4px);
   }
 }
 @media (max-width: 720px) {
-  .container_wide .section04-inner .info-box p {
+  .container_wide footer .footer-inner .info-box p {
     font-size: calc(2vw + 5px);
   }
 }
 @media (max-width: 480px) {
-  .container_wide .section04-inner .info-box p {
+  .container_wide footer .footer-inner .info-box p {
     font-size: 14px;
   }
 }
-.container_wide .section04-inner .info-box ul {
+.container_wide footer .footer-inner .info-box ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 0.7vw;
 }
-.container_wide .section04-inner .info-box ul li {
+.container_wide footer .footer-inner .info-box ul li {
   height: 2vw;
   line-height: 2vw;
   padding: 0 0.8vw;
@@ -1344,7 +1347,7 @@ a {
   cursor: pointer;
 }
 @media (max-width: 1400px) {
-  .container_wide .section04-inner .info-box ul li {
+  .container_wide footer .footer-inner .info-box ul li {
     height: 3vw;
     line-height: 3vw;
     padding: 0 1.2vw;
@@ -1352,7 +1355,7 @@ a {
   }
 }
 @media (max-width: 991px) {
-  .container_wide .section04-inner .info-box ul li {
+  .container_wide footer .footer-inner .info-box ul li {
     height: 5vw;
     line-height: 5vw;
     padding: 0 2.5vw;
@@ -1360,7 +1363,7 @@ a {
   }
 }
 @media (max-width: 720px) {
-  .container_wide .section04-inner .info-box ul li {
+  .container_wide footer .footer-inner .info-box ul li {
     height: 6vw;
     line-height: 6vw;
     padding: 0 3vw;
@@ -1368,7 +1371,7 @@ a {
   }
 }
 @media (max-width: 480px) {
-  .container_wide .section04-inner .info-box ul li {
+  .container_wide footer .footer-inner .info-box ul li {
     height: 25px;
     line-height: 25px;
     padding: 0 12px;
@@ -1376,23 +1379,23 @@ a {
   }
 }
 @media (max-width: 991px) {
-  .container_wide .section04-inner .info-box ul {
+  .container_wide footer .footer-inner .info-box ul {
     gap: 2vw;
   }
 }
-.container_wide .section04-inner .info-box ul li {
+.container_wide footer .footer-inner .info-box ul li {
   background: rgb(0, 144, 0);
 }
-.container_wide .section04-inner .info-box ul li a {
+.container_wide footer .footer-inner .info-box ul li a {
   color: #000;
 }
 @media (max-width: 480px) {
-  .container_wide .section04-inner .info-box ul {
+  .container_wide footer .footer-inner .info-box ul {
     gap: 7px;
   }
 }
 @media (max-width: 991px) {
-  .container_wide .section04-inner .info-box {
+  .container_wide footer .footer-inner .info-box {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1407,10 +1410,7 @@ a {
   }
 }
 @media (max-width: 480px) {
-  .container_wide .section04-inner .info-box {
+  .container_wide footer .footer-inner .info-box {
     padding: 0 15px 30px;
   }
-}
-.container_wide .section04.mobile .section04-inner .float-txt-wrap {
-  height: 70vh;
 }

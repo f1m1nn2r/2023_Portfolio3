@@ -113,7 +113,7 @@ document.querySelector('.section02-inner .top-column').addEventListener('click',
 
 // work 섹션 작업물 div 및 img 추가
 const stickyBox = document.querySelector('.sticky-box');
-for(var i=0; i<15; i++){
+for(var i=0; i<16; i++){
     const newDiv = document.createElement('div');
     newDiv.setAttribute('class', 'work-sticky');
     stickyBox.append(newDiv);
@@ -127,6 +127,7 @@ for(var i=0; i<workDiv.length; i++){
 }
 
 const portfolio = [
+    {name:'GREEN TALK', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2023. 07. 12 ~ 2023. 07. 17', link:'https://home.greentalk.kr/'},
     {name:'HANKUK PACKGE', subName:'', level:'퍼블리싱 참여도 100%(영문, 일문 페이지 제외)', date:'제작 소요일 2023. 03. 13 ~ 2023. 03. 21', link:'https://www.hkpak.co.kr/'},
     {name:'HEYAN', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2023. 02. 15 ~ 2023. 02. 22', link:'https://www.thinkhyean.com/'},
     {name:'THE BLUE', subName:'', level:'퍼블리싱 참여도 100%', date:'제작 소요일 2023. 02. 01 ~ 2023. 02. 10', link:'http://thebluecc.com/'},
@@ -164,7 +165,7 @@ const io = new IntersectionObserver((entries) => {
         for(var i=0; i<workDivs.length; i++){
             if(entry.intersectionRatio >= 0 && entry.isIntersecting ){
                 workDivs[index].style.zIndex = 100 + index;
-                //console.log(index);
+                //console.log(index);7
                 if(index % 2 == 1){
                     document.querySelector('.sticky-box').style.transform = 'translateY(-50%) rotate(5deg)';
                     
